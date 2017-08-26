@@ -1,0 +1,54 @@
+[submodule "ale"]
+	path = ale
+	url = ./bundle/ale
+[submodule "bundle/ale"]
+	path = bundle/ale
+	url = ./bundle/ale
+[submodule "bundle/gruvbox"]
+	path = bundle/gruvbox
+	url = ./bundle/gruvbox
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = ./bundle/nerdtree
+[submodule "bundle/tern_for_vim"]
+	path = bundle/tern_for_vim
+	url = ./bundle/tern_for_vim
+[submodule "bundle/vim-flow"]
+	path = bundle/vim-flow
+	url = ./bundle/vim-flow
+[submodule "bundle/vim-javascript"]
+	path = bundle/vim-javascript
+	url = ./bundle/vim-javascript
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = ./bundle/vim-markdown
+[submodule "bundle/vim-sensible"]
+	path = bundle/vim-sensible
+	url = ./bundle/vim-sensible
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = ./bundle/vim-surround
+[submodule "bundle/ctrlp.vim"]
+	path = bundle/ctrlp.vim
+	url = ./bundle/ctrlp.vim
+[submodule "bundle/neocomplete.vim"]
+	path = bundle/neocomplete.vim
+	url = ./bundle/neocomplete.vim
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = ./bundle/supertab
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = ./bundle/vim-airline
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = ./bundle/vim-fugitive
+[submodule "bundle/vim-jsx"]
+	path = bundle/vim-jsx
+	url = ./bundle/vim-jsx
+[submodule "bundle/vim-repeat"]
+	path = bundle/vim-repeat
+	url = ./bundle/vim-repeat
+[submodule "bundle/vim-sleuth"]
+	path = bundle/vim-sleuth
+	url = ./bundle/vim-sleuth
