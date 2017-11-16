@@ -1,6 +1,10 @@
 execute pathogen#infect()
 set bg=dark
 syntax on
+filetype on
+filetype plugin indent on
+let mapleader = " "
+let maplocalleader = "\\"
 set showmode
 set number "show line numbers
 set relativenumber
@@ -22,13 +26,14 @@ set splitright
 
 autocmd Filetype python setlocal ts=2 sw=2 expandtab
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
-
+" auto remove trailing spaces
+autocmd BufWritePre * :%s/\s\+$//e
 "key re mappings
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
+nmap		 <C-p> :FZF<cr>
 "javascript specific setup
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_save = 1
