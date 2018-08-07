@@ -72,6 +72,7 @@ let g:ctrlp_custom_ignore = {
       \ 'dir': '\v[\/](node_modules|__screenshots__|__image_snapshots__ | \.(git))$',
       \ 'file': '\v\.(png|jpg|jpeg|svg)$',
       \ }
+
 " download vimplug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
