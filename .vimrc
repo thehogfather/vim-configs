@@ -23,6 +23,12 @@ set encoding=utf-8
 set splitbelow
 set splitright
 
+set ignorecase
+set smartcase
+
+set incsearch
+set hlsearch
+
 autocmd Filetype python setlocal ts=2 sw=2 expandtab
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 " auto remove trailing spaces
@@ -32,8 +38,17 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+" search related remapping
+nnoremap <silent> <BS> :nohlsearch<CR>
+nnoremap / /\v
 nmap		 <C-p> :FZF<cr>
 
+" set undo
+if has('persistent_undo')
+  set undofile
+endif
+set undodir=$HOME/.vim-undo-dir
+set undolevels=5000
 " Nerd tree toggle
 nmap <leader>h :NERDTreeToggle<CR>
 "javascript specific setup
@@ -52,7 +67,11 @@ let g:jsx_ext_required = 0
 let g:ycm_semantic_triggers = {
      \ 'elm' : ['.'],
 		 \}
-
+" ctrl-p ignore for js
+let g:ctrlp_custom_ignore = {
+      \ 'dir': '\v[\/](node_modules|__screenshots__|__image_snapshots__ | \.(git))$',
+      \ 'file': '\v\.(png|jpg|jpeg|svg)$',
+      \ }
 " download vimplug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -81,7 +100,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
 Plug 'mxw/vim-jsx'
