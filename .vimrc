@@ -108,4 +108,5 @@ Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'idris-hackers/idris-vim'
+Plug 'jparise/vim-graphql'
 call plug#end()
