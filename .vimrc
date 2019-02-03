@@ -38,6 +38,13 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+" line moves
+nnoremap  ∆ :m .+1<CR>==
+nnoremap  ˚ :m .-2<CR>==
+inoremap  ∆ <Esc>:m .+1<CR>==gi
+inoremap  ˚ <Esc>:m .-2<CR>==gi
+vnoremap  ∆ :m '>+1<CR>gv=gv
+vnoremap  ˚ :m '<-2<CR>gv=gv
 " search related remapping
 nnoremap <silent> <BS> :nohlsearch<CR>
 nnoremap / /\v
@@ -94,7 +101,7 @@ endfunction
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'w0rp/ale'
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'scrooloose/nerdtree'
 Plug 'flowtype/vim-flow'
 Plug 'pangloss/vim-javascript'
@@ -108,4 +115,30 @@ Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'idris-hackers/idris-vim'
+Plug 'martinda/Jenkinsfile-vim-syntax'
+" reason ml plugin
+Plug 'reasonml-editor/vim-reason-plus'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+" for neovim
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" for vim 8 with python
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+  " the path to python3 is obtained through executing `:echo exepath('python3')` in vim
+  let g:python3_host_prog = "/usr/local/bin/python3"
+endif
 call plug#end()
+
+" reason configs
+let g:LanguageClient_serverCommands = {
+    \ 'reason': ['/Users/patrick/code/reason/reason-language-server.exe'],
+    \ }
+
+" enable autocomplete
+let g:deoplete#enable_at_startup = 1
