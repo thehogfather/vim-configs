@@ -31,6 +31,7 @@ set hlsearch
 
 autocmd Filetype python setlocal ts=2 sw=2 expandtab
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype haskell setlocal ts=2 softtabstop=2 sw=2 expandtab
 " auto remove trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
 "key re mappings
@@ -56,6 +57,10 @@ if has('persistent_undo')
 endif
 set undodir=$HOME/.vim-undo-dir
 set undolevels=5000
+" gruvbox theme configs
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_termcolors = 16
+
 " Nerd tree toggle
 nmap <leader>h :NERDTreeToggle<CR>
 "javascript specific setup
@@ -133,6 +138,7 @@ else
   " the path to python3 is obtained through executing `:echo exepath('python3')` in vim
   let g:python3_host_prog = "/usr/local/bin/python3"
 endif
+Plug 'jparise/vim-graphql'
 call plug#end()
 
 " reason configs
