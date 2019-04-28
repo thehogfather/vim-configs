@@ -33,7 +33,9 @@ autocmd Filetype python setlocal ts=2 sw=2 expandtab
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 autocmd Filetype haskell setlocal ts=2 softtabstop=2 sw=2 expandtab
 " auto remove trailing spaces
-autocmd BufWritePre * :%s/\s\+$//e
+" auto run prettier on js files
+let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx PrettierAsync
 "key re mappings
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -66,12 +68,20 @@ nmap <leader>h :NERDTreeToggle<CR>
 "javascript specific setup
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
 let g:airline_powerline_fonts = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_sign_column_always = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier', 'eslint'],
+\}
 
 let g:javascript_plugin_flow = 1
 let g:javascript_plugin_jsdoc = 1
+
+let g:flutter_command = '/Users/patrick/code/frameworks/flutter/bin/flutter'
+
 
 let g:airline#extensions#tabline#enabled = 1
 let g:jsx_ext_required = 0
@@ -106,7 +116,6 @@ endfunction
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'w0rp/ale'
-" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'scrooloose/nerdtree'
 Plug 'flowtype/vim-flow'
 Plug 'pangloss/vim-javascript'
@@ -121,6 +130,26 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'idris-hackers/idris-vim'
 Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'mileszs/ack.vim'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'branch': 'release/1.x',
+  \ 'for': [
+    \ 'javascript',
+    \ 'typescript',
+    \ 'css',
+    \ 'less',
+    \ 'scss',
+    \ 'json',
+    \ 'graphql',
+    \ 'markdown',
+    \ 'vue',
+    \ 'lua',
+    \ 'php',
+    \ 'python',
+    \ 'ruby',
+    \ 'html',
+    \ 'swift' ] }
 " reason ml plugin
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'autozimu/LanguageClient-neovim', {
@@ -128,17 +157,20 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 " for neovim
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" for vim 8 with python
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-  " the path to python3 is obtained through executing `:echo exepath('python3')` in vim
-  let g:python3_host_prog = "/usr/local/bin/python3"
-endif
+"if has('nvim')
+"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"" for vim 8 with python
+"else
+"  Plug 'Shougo/deoplete.nvim'
+"  Plug 'roxma/nvim-yarp'
+"  Plug 'roxma/vim-hug-neovim-rpc'
+"  " the path to python3 is obtained through executing `:echo exepath('python3')` in vim
+"  let g:python3_host_prog = "/usr/local/bin/python3"
+"endif
 Plug 'jparise/vim-graphql'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
 call plug#end()
 
 " reason configs
