@@ -78,6 +78,7 @@ let g:ale_fixers = {
 \}
 
 let g:javascript_plugin_flow = 1
+let g:flow#showquickfix = 0
 let g:javascript_plugin_jsdoc = 1
 
 let g:flutter_command = '/Users/patrick/code/frameworks/flutter/bin/flutter'
@@ -101,16 +102,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
-function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-    !./install.py
-  endif
-endfunction
 
 " plugin installations
 call plug#begin('~/.vim/plugged')
@@ -156,17 +147,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-" for neovim
-"if has('nvim')
-"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"" for vim 8 with python
-"else
-"  Plug 'Shougo/deoplete.nvim'
-"  Plug 'roxma/nvim-yarp'
-"  Plug 'roxma/vim-hug-neovim-rpc'
-"  " the path to python3 is obtained through executing `:echo exepath('python3')` in vim
-"  let g:python3_host_prog = "/usr/local/bin/python3"
-"endif
 Plug 'jparise/vim-graphql'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'dart-lang/dart-vim-plugin'
@@ -178,5 +158,3 @@ let g:LanguageClient_serverCommands = {
     \ 'reason': ['/Users/patrick/code/reason/reason-language-server.exe'],
     \ }
 
-" enable autocomplete
-let g:deoplete#enable_at_startup = 1
