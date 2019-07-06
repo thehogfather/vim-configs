@@ -54,6 +54,7 @@ nnoremap / /\v
 nmap		 <C-p> :FZF<cr>
 nmap <Leader>t :Files<CR>
 nmap <Leader>b :Buffers<CR>
+nmap <Leader>f :NERDTreeFind<CR>
 
 " set undo
 if has('persistent_undo')
