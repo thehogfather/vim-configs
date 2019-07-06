@@ -52,6 +52,8 @@ vnoremap  ˚ :m '<-2<CR>gv=gv
 nnoremap <silent> <BS> :nohlsearch<CR>
 nnoremap / /\v
 nmap		 <C-p> :FZF<cr>
+nmap <Leader>t :Files<CR>
+nmap <Leader>b :Buffers<CR>
 
 " set undo
 if has('persistent_undo')
@@ -65,6 +67,7 @@ let g:gruvbox_termcolors = 16
 
 " Nerd tree toggle
 nmap <leader>h :NERDTreeToggle<CR>
+nmap <leader>a :Ack<Space>
 "javascript specific setup
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_save = 1
@@ -151,6 +154,9 @@ Plug 'jparise/vim-graphql'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
+" below expects you've installed fzf brew install fzf
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " reason configs
@@ -158,3 +164,25 @@ let g:LanguageClient_serverCommands = {
     \ 'reason': ['/Users/patrick/code/reason/reason-language-server.exe'],
     \ }
 
+" Ack ag config
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" set fzf colour settings
+set rtp+=/usr/local/opt/fzf
+ 
+let g:fzf_tags_command = 'ctags --extra=+f -R'
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
