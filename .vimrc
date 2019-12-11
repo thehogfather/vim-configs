@@ -160,6 +160,9 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
+" supertab config
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
 " reason configs
 let g:LanguageClient_serverCommands = {
     \ 'reason': ['/Users/patrick/code/reason/reason-language-server.exe'],
