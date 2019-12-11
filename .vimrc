@@ -78,7 +78,10 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_sign_column_always = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['prettier', 'eslint'],
+\   'javascript': ['eslint'],
+\}
+let g:ale_linters = {
+\ 'javascript': ['flow', 'eslint'],
 \}
 
 let g:javascript_plugin_flow = 1
@@ -158,6 +161,7 @@ Plug 'thosakwe/vim-flutter'
 " below expects you've installed fzf brew install fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'FStarLang/VimFStar'
 call plug#end()
 
 " supertab config
@@ -175,7 +179,7 @@ endif
 
 " set fzf colour settings
 set rtp+=/usr/local/opt/fzf
- 
+
 let g:fzf_tags_command = 'ctags --extra=+f -R'
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
