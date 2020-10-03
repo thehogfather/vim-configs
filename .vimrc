@@ -162,6 +162,7 @@ Plug 'thosakwe/vim-flutter'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'FStarLang/VimFStar'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 " supertab config
