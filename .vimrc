@@ -150,10 +150,6 @@ Plug 'prettier/vim-prettier', {
     \ 'swift' ] }
 " reason ml plugin
 Plug 'reasonml-editor/vim-reason-plus'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
 Plug 'jparise/vim-graphql'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'dart-lang/dart-vim-plugin'
